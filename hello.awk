@@ -29,3 +29,17 @@ awk ' $0 ~ /[0-9]{1}\-[0-9]{1,3}\-[0-9]{1,3}\-[0-9]{1,3}/ { print $0 }' numbers.
 #print the total number of records
 awk 'END { print NR }' numbers.txt 
 
+
+#print used size of directory in MB and GB
+du -hk /home | awk '{ sum=+$1 } END { printf ("Used size = %.3f MB, %.3f G \n",(sum/1024),(sum/(1024*1024)) ) }'
+
+
+#split 
+
+
+awk 'BEGIN { 
+    split("auto-da-fe", a, "-"); 
+    for (i in a) 
+        print a[i] 
+    }'
+
